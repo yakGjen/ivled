@@ -1,0 +1,284 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  height: 100vh;
+  position: relative;
+  
+  .background {
+    position: fixed;
+    
+    height: inherit;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+.main {
+  margin-top: -50px;
+  /*padding: 0 50px;*/
+  
+  background: #ffffff;
+  
+  .nav {
+    min-height: 50px;
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    
+    .menu {
+      width: 100%;
+      
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      
+      transition: all 0.7s 0s linear;
+      
+      li {
+        list-style: none;
+        position: relative;
+        
+        a {
+          text-decoration: none;
+          color: #000000;
+          font-weight: bold;
+        }
+        
+        a:hover {
+          color: #3bb0c0;
+        }
+        
+        .sub-menu {
+          width: 160px;
+          display: none;
+          padding: 0;
+
+          position: absolute;
+          left: 15px;
+          z-index: 2;
+
+          background: #ffffff;
+          font-size: 90%;
+          border: solid 1px #3bb0c0;
+          
+          li {
+            margin: 5px;
+          }
+        }
+      }
+      
+      li:hover {
+        
+        .sub-menu {
+          display: block;
+        }
+        
+        .pointer::before {
+          content: '↑';
+        }
+        .pointer::after {
+          content: none;
+        }
+        span {
+          color: #3bb0c0;
+        }
+      }
+      
+      .pointer::after {
+        content: '↓';
+      }
+    }
+  }
+  
+  .content {
+    padding: 100px 0px;
+    
+    .hockey-content {
+      padding: 0 50px;
+      
+      div {
+        text-align: center;
+      }
+    }
+    
+    .fig-coaches {
+      padding: 0 50px;
+      
+      text-align: center;
+    }
+    .fig-athletes {
+      padding: 0 50px;
+    }
+    .swimming {
+      img {
+        width: 100%;
+      }
+      
+      div {
+        padding: 0 50px;
+        
+        p {
+          text-align: justify;
+        }
+        
+        .gallery {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          align-items: center;
+          
+          img {
+            width: 30%;
+            margin-bottom: 10px;
+            
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .contacts {
+      padding: 100px 50px;
+      
+      div {
+        h2 {
+          text-align: center;
+        }
+        p:nth-child(even) {
+          font-weight: bold;
+          text-decoration: underline;
+        }
+        p:nth-child(odd) {
+          margin-left: 50px;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  height: 50px;
+  padding: 0 40px;
+  
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  background: #ffffff;
+  font-size: 90%;
+  border-top: solid 1px grey;
+  
+  section {
+    width: 50%;
+  }
+  section:first-child {
+    text-align: left;
+  }
+  section:last-child {
+    text-align: right;
+    
+    a {
+      text-decoration: none;
+      color: #000000;
+    }
+    a:hover {
+      color: #3bb0c0;
+    }
+  }
+}
+
+.burger {
+  width: 30px;
+  height: 30px;
+  
+  box-sizing: border-box;
+  padding: 5px 0;
+  
+  position: relative;
+  z-index: 3;
+  
+  display: none;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  
+  border: solid 1px #000000;
+  
+  transition: all 0.2s 0s linear;
+  
+  div {
+    width: 70%;
+    border: solid 1px #000000;
+  }
+}
+
+.burger:hover {
+  cursor: pointer;
+}
+
+/*поменять на ~570px*/
+@media all and (max-width: 570px) {
+  .main {
+    margin-top: -40px;
+    padding: 0 30px;
+    
+    .nav {
+      justify-content: flex-start;
+      padding: 5px 0;
+      /*border: solid 1px red;*/
+
+      .burger {
+        display: flex;
+      }
+
+      .burger-active {
+        transform: rotate(90deg);
+      }
+
+      .menu {
+        display: none;
+        opacity: 0;
+
+        li {
+          .sub-menu {
+            left: 60%;
+          }
+        }
+      }
+
+      .menu-display {
+        display: flex;
+      }
+
+      .show-menu {
+        /*display: flex !important;*/
+        flex-direction: column;
+        opacity: 1;
+      }
+    }
+    
+    .content {
+      padding: 0 0 30px 0;
+      
+      font-size: 90%;
+    }
+  }
+  
+  .footer {
+    height: 50px;
+    
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+    
+    section {
+      width: 100%;
+      
+      text-align: center !important;
+    }
+  }
+}
